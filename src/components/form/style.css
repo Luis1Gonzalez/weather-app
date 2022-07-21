@@ -1,0 +1,10 @@
+.input-city{
+    height: 25px;
+}
+
+.btn-city{
+    height: 25px;
+    background-color: silver;
+    width: 30%;
+    padding:0;
+}

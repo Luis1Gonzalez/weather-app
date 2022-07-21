@@ -1,0 +1,39 @@
+.wrap_weather_here {
+box-shadow: 0 0 5px #ccc, 0 0 8px #fff;
+}
+
+.wrap_time_here{
+    background-color: silver;
+}
+
+.here_icon {
+    height: 65%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.here_icon img {
+    width: 100%;
+}
+
+.here_icon_description {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform:capitalize;
+}
+
+.wrap_options_here{
+    box-shadow: 0 0 5px #ccc, 0 0 8px #fff;
+    height: auto;
+}
+
+.wrap_option-odd{
+    background-color: rgb(231, 226, 226);
+}
+
+
+

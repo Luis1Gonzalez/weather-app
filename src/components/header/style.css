@@ -1,0 +1,14 @@
+.wrap_header{
+height: 70px;
+box-shadow: 0 0 5px #ccc, 0 0 8px #fff;
+font-family: 'Courgette', cursive;
+color:blue;
+text-shadow: 0 0 3px #fff, 0 0 9px #000;
+background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F33%2F0c%2Ff4%2F330cf430387f41c59ed551cdba31030d.gif&f=1&nofb=1);
+background-size:auto;
+background-position: -135px -90px;
+background-repeat: no-repeat;
+}
+
+
+
