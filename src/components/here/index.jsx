@@ -165,11 +165,11 @@ if(anyWeather.name){
   if(anyWeather.main?.temp >= 30){
     setReco=hot;
     // console.log(setReco);
-  }else if(anyWeather.main?.temp >= 20 && anyWeather.main?.temp <= 29){
+  }else if(anyWeather.main?.temp >= 20 && anyWeather.main?.temp < 30){
     setReco=nice;
-  }else if(anyWeather.main?.temp >= 15 && anyWeather.main?.temp <= 19){
+  }else if(anyWeather.main?.temp >= 15 && anyWeather.main?.temp < 20){
     setReco=cold;
-  }else if(anyWeather.main?.temp <= 15){
+  }else if(anyWeather.main?.temp < 15){
     setReco=frozen;
   }
 
@@ -177,11 +177,11 @@ if(anyWeather.name){
 if(local.main?.temp >= 30){
   setReco=hot;
   // console.log(setReco);
-}else if(local.main?.temp >= 20 && local.main?.temp <= 29){
+}else if(local.main?.temp >= 20 && local.main?.temp < 30){
   setReco=nice;
-}else if(local.main?.temp >= 15 && local.main?.temp >= 19){
+}else if(local.main?.temp >= 15 && local.main?.temp < 20){
   setReco=cold;
-}else if(local.main?.temp <= 15){
+}else if(local.main?.temp < 15){
   setReco=frozen;
 }
 }
@@ -200,13 +200,14 @@ themeText="#000";
 }
 isNight()
 
+
   return (
   
       <div className="wrap_here">
 
 <Form newLocation = {getLocation} />
 
-      <div className="wrap_weather_here row px-3"  style = {{backgroundImage:theme, color:themeText, fontWeight:"bold",textShadow:"0 0 3px #000, 0 0 5px #fff"}}>
+      <div className="wrap_weather_here row px-3"  style = {{backgroundImage:theme,backgroundRepeat:"no-repeat",backgroundSize:"cover", color:themeText, fontWeight:"bold",textShadow:"0 0 3px #000, 0 0 5px #fff"}}>
       <div className="col col-4 d-flex flex-column justify-content-center align-items-center flex-wrap" >
       <div className="here_icon"><img src={urlIcons} alt="" /></div>
       <div className="here_icon_description">{descriptions}</div>

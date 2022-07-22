@@ -1,5 +1,6 @@
 .wrap_weather_here {
 box-shadow: 0 0 5px #ccc, 0 0 8px #fff;
+height: 150px;
 }
 
 .wrap_time_here{
