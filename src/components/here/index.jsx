@@ -207,7 +207,7 @@ isNight()
 
 <Form newLocation = {getLocation} />
 
-      <div className="wrap_weather_here row px-3"  style = {{backgroundImage:theme,backgroundRepeat:"no-repeat",backgroundSize:"cover", color:themeText, fontWeight:"bold",textShadow:"0 0 3px #000, 0 0 5px #fff"}}>
+      <div className="wrap_weather_here row px-3"  style = {{backgroundImage:theme, color:themeText, fontWeight:"bold",textShadow:"0 0 3px #000, 0 0 5px #fff"}}>
       <div className="col col-4 d-flex flex-column justify-content-center align-items-center flex-wrap" >
       <div className="here_icon"><img src={urlIcons} alt="" /></div>
       <div className="here_icon_description">{descriptions}</div>
