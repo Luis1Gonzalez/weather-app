@@ -191,7 +191,7 @@ showReco()
 function isNight(){  
   if(hourTheme >=7 && hourTheme <=19){
 theme="url(https://i.makeagif.com/media/3-05-2016/SvtWwV.gif)";
-themeText="#000";
+themeText="orange";
   }else{
     theme="url(https://i.imgur.com/yRoaDL2.gif)";
     themeText="#fff";
