@@ -25,7 +25,9 @@ export default function Here() {
 
 let urlIcon= "http://openweathermap.org/img/w/";
 let urlIcons = "";
-let descriptions = ""
+let descriptions = "";
+let iconTimeWeather = "";
+let iconTimeLocal = "";
 
 
 
@@ -41,9 +43,9 @@ let descriptions = ""
   let date = new Date();
   let outputDate = `${days[date.getDay()]} ${String(date.getDate()).padStart(2,'0')} de ${months[date.getMonth()]}`
   let outputHour = date.toLocaleTimeString();
-  let hourTheme = date.getHours();
   let theme= "";
   let themeText=""
+  
   
 
   let hot = {
@@ -154,13 +156,14 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&app
 if(anyWeather.name){
   urlIcons = urlIcon + anyWeather.weather[0]?.icon + '.png';
   descriptions = anyWeather.weather[0]?.description;
+  iconTimeWeather = anyWeather.weather[0]?.icon;
 }else if(local.name){
   urlIcons = urlIcon + local.weather[0]?.icon + '.png';
   descriptions = local.weather[0]?.description;
+  iconTimeLocal = local.weather[0]?.icon;
 }
 
 function showReco(){
-
 if(anyWeather.name){
   if(anyWeather.main?.temp >= 30){
     setReco=hot;
@@ -189,7 +192,8 @@ if(local.main?.temp >= 30){
 showReco()
 
 function isNight(){  
-  if(hourTheme >=7 && hourTheme <=19){
+  if(iconTimeWeather === '01d' || iconTimeWeather === '02d' || iconTimeWeather === '03d' || iconTimeWeather === '04d' || iconTimeWeather === '09d' || iconTimeWeather === '10d' || iconTimeWeather === '11d' || iconTimeWeather === '13d' || iconTimeWeather === '50d'
+  || iconTimeLocal === '01d' || iconTimeLocal === '02d' || iconTimeLocal === '03d' || iconTimeLocal === '04d' || iconTimeLocal === '09d' || iconTimeLocal === '10d' || iconTimeLocal === '11d' || iconTimeLocal === '13d' || iconTimeLocal === '50d'){
 theme="url(https://i.makeagif.com/media/3-05-2016/SvtWwV.gif)";
 themeText="orange";
   }else{
@@ -201,6 +205,33 @@ themeText="orange";
 isNight()
 
 
+// function isNight(){  
+//   if(hourTheme >=7 && hourTheme <=19){
+// theme="url(https://i.makeagif.com/media/3-05-2016/SvtWwV.gif)";
+// themeText="orange";
+//   }else{
+//     theme="url(https://i.imgur.com/yRoaDL2.gif)";
+//     themeText="#fff";
+    
+//   }
+// }
+// isNight()
+// let local_unix = local.dt;
+// let local_unix_date = new Date(local_unix*1000);
+// var local_unix_hours = local_unix_date.getHours();
+// var local_unix_minutes = "0" + local_unix_date.getMinutes();
+// var local_formattedTime = local_unix_hours + ':' + local_unix_minutes.substr(-2);
+// console.log(local_formattedTime);
+
+let anyWeather_unix = anyWeather.dt;
+let anyWeather_unix_date = new Date(anyWeather_unix*1000);
+var anyWeather_unix_hours = anyWeather_unix_date.getHours();
+var anyWeather_unix_minutes = "0" + anyWeather_unix_date.getMinutes();
+var anyWeather_formattedTime = anyWeather_unix_hours + ':' + anyWeather_unix_minutes.substr(-2);
+console.log(anyWeather_formattedTime);
+
+// console.log(local.dt)
+// console.log(anyWeather.dt)
   return (
   
       <div className="wrap_here">
