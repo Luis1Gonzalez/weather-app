@@ -238,8 +238,8 @@ function hidenToggler(){
       </div>
       </div>
 
-      <div className="wrap_earth bg-primary p-0" style = {{display:dearth}}>
-          <img src="https://thumbs.gfycat.com/AnySourJanenschia-max-1mb.gif" alt="imagen del planeta girando" />
+      <div className="wrap_earth p-0" style = {{display:dearth}}>
+          <img src="https://fegasofi.files.wordpress.com/2010/09/planeta-gif-2b924d2.gif" alt="imagen del planeta girando" />
         </div>
 
       <div className="wrap_options_here row px-4 my-2" style = {{display:dplay}}>
