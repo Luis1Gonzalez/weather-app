@@ -1,10 +1,16 @@
-.input-city{
-    height: 25px;
+.wrap_form{
+    height:130px;
+    width: 100%;
+}
+
+.input-city, .input-country{
+height: 20px;
 }
 
 .btn-city{
-    height: 25px;
-    background-color: silver;
+    height: 35px;
+    background-color: rgb(64, 64, 219);
     width: 30%;
     padding:0;
+    color:#fff;
 }

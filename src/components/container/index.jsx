@@ -6,7 +6,7 @@ import Here from "../here/index.jsx";
 export default function Container() {
   return (
     <div className="wrap_container row">
-      <div className="col">
+      <div className="col p-0">
       <Header />
       <Here />
       </div>

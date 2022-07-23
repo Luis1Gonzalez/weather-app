@@ -35,6 +35,7 @@ let iconTimeLocal = "";
   let [reco,setReco] = useState({});
   const [anyWeather, setAnyWeather] = useState({});
   const [anyLocation, setAnyLocation] = useState("");
+  const [country, setAnyCountry] = useState("");
   
 
   let months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
@@ -97,14 +98,21 @@ let iconTimeLocal = "";
     "icon4":<GiIceSkate />,
   };
 
+
   let urlAnyWeather =
     `https://api.openweathermap.org/data/2.5/weather?appid=${process.env.REACT_APP_API_KEY_WEATHER}&units=metric&lang=es`;
   let cityUrl = "&q=";
 
-  const getLocation = async (loc) => {
+  const getLocation = async (loc,cou) => {
     setAnyLocation(loc);
+    setAnyCountry(cou);
 
+    if (cou === ""){
     urlAnyWeather = urlAnyWeather + cityUrl + loc;
+  }else{
+    urlAnyWeather = `${urlAnyWeather}${cityUrl}${loc},${cou}`;
+  }
+  console.log(urlAnyWeather)
 
     await fetch(urlAnyWeather)
       .then((response) => {
@@ -216,11 +224,11 @@ function hidenToggler(){
 
   return (
   
-      <div className="wrap_here">
+      <div className="wrap_here d-flex flex-column align-items-center">
 
-<Form newLocation = {getLocation} />
+<Form newLocation = {getLocation}/>
 
-      <div className="wrap_weather_here row px-3"  style = {{backgroundImage:theme, color:themeText, fontWeight:"bold",textShadow:"0 0 6px #000, 0 0 8px #fff", display:dplay}}>
+      <div className="wrap_weather_here row px-3 w-100"  style = {{backgroundImage:theme, color:themeText, fontWeight:"bold",textShadow:"0 0 6px #000, 0 0 8px #fff", display:dplay}}>
       <div className="col col-4 d-flex flex-column justify-content-center align-items-center flex-wrap" >
       <div className="here_icon"><img src={urlIcons} alt="" /></div>
       <div className="here_icon_description fs-6">{descriptions}</div>
@@ -266,7 +274,7 @@ function hidenToggler(){
             <div className="plans col-10 d-flex justify-content-center fs-4">{setReco.option4}</div>
             </div>
 
-          <div className="col d-flex justify-content-center bg-warning p-2 mt-2 mb-4 fs-6 text-center">{setReco.recomendation}</div>
+          <div className="col d-flex justify-content-center p-2 mt-2 mb-4 fs-6 text-center">{setReco.recomendation}</div>
         </div>       
 
         </div>        
