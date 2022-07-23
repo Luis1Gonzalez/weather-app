@@ -35,7 +35,6 @@ let iconTimeLocal = "";
   let [reco,setReco] = useState({});
   const [anyWeather, setAnyWeather] = useState({});
   const [anyLocation, setAnyLocation] = useState("");
-  const [show, setShow] = useState(false);
   
 
   let months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
@@ -45,6 +44,8 @@ let iconTimeLocal = "";
   let outputHour = date.toLocaleTimeString();
   let theme= "";
   let themeText=""
+  let dplay = ""
+  let dearth ="";
   
   
 
@@ -116,7 +117,6 @@ let iconTimeLocal = "";
       })
       .catch((error) => {
         console.log(error);
-        setShow(false)
       });
     
   }
@@ -147,7 +147,6 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&app
 
 .catch((error) =>{
   console.log(error);
-  setShow(false)
 });
 
 }
@@ -204,59 +203,46 @@ themeText="orange";
 }
 isNight()
 
+function hidenToggler(){
+  if (local?.name !== undefined || anyWeather?.name !== undefined){
+    dplay='flex';
+    dearth='none';
+  }else{
+    dplay='none';
+    dearth='flex';
+  }
+}
+  hidenToggler()
 
-// function isNight(){  
-//   if(hourTheme >=7 && hourTheme <=19){
-// theme="url(https://i.makeagif.com/media/3-05-2016/SvtWwV.gif)";
-// themeText="orange";
-//   }else{
-//     theme="url(https://i.imgur.com/yRoaDL2.gif)";
-//     themeText="#fff";
-    
-//   }
-// }
-// isNight()
-// let local_unix = local.dt;
-// let local_unix_date = new Date(local_unix*1000);
-// var local_unix_hours = local_unix_date.getHours();
-// var local_unix_minutes = "0" + local_unix_date.getMinutes();
-// var local_formattedTime = local_unix_hours + ':' + local_unix_minutes.substr(-2);
-// console.log(local_formattedTime);
-
-let anyWeather_unix = anyWeather.dt;
-let anyWeather_unix_date = new Date(anyWeather_unix*1000);
-var anyWeather_unix_hours = anyWeather_unix_date.getHours();
-var anyWeather_unix_minutes = "0" + anyWeather_unix_date.getMinutes();
-var anyWeather_formattedTime = anyWeather_unix_hours + ':' + anyWeather_unix_minutes.substr(-2);
-console.log(anyWeather_formattedTime);
-
-// console.log(local.dt)
-// console.log(anyWeather.dt)
   return (
   
       <div className="wrap_here">
 
 <Form newLocation = {getLocation} />
 
-      <div className="wrap_weather_here row px-3"  style = {{backgroundImage:theme, color:themeText, fontWeight:"bold",textShadow:"0 0 3px #000, 0 0 5px #fff"}}>
+      <div className="wrap_weather_here row px-3"  style = {{backgroundImage:theme, color:themeText, fontWeight:"bold",textShadow:"0 0 6px #000, 0 0 8px #fff", display:dplay}}>
       <div className="col col-4 d-flex flex-column justify-content-center align-items-center flex-wrap" >
       <div className="here_icon"><img src={urlIcons} alt="" /></div>
-      <div className="here_icon_description">{descriptions}</div>
+      <div className="here_icon_description fs-6">{descriptions}</div>
       </div>
 
       <div className="col col-8 d-flex justify-content-center align-items-center">        
           <div className="here_day col d-flex flex-column">
-          <div className="here_time my-0 d-flex justify-content-end">{outputDate}</div>
-          <div className="my-0 d-flex justify-content-end">{`Tiempo a las ${outputHour} horas`}</div>
+          <div className="here_time my-0 d-flex justify-content-end fs-6">{outputDate}</div>
+          <div className="my-0 d-flex justify-content-end fs-6">{`Tiempo a las ${outputHour} hora local`}</div>
 
-        <div className="my-0 d-flex justify-content-end">{anyWeather?.name ? `${anyWeather?.name} - ${anyWeather?.sys?.country}` : `${local?.name} - ${local?.sys?.country}`}</div>
-        <div className="my-0 d-flex justify-content-center"><h4>{anyWeather?.name ? `${anyWeather?.main?.temp?.toFixed(0)}ºC` : `${local?.main?.temp?.toFixed(0)}ºC`}</h4></div>
-        <div className="my-0 d-flex justify-content-center">{anyWeather?.name ? `${anyWeather?.main?.temp_min?.toFixed(0)}ºC - ${anyWeather?.main?.temp_max?.toFixed(0)}ºC ` : `${local?.main?.temp_min?.toFixed(0)}ºC - ${local?.main?.temp_max?.toFixed(0)}ºC `}</div>        
+        <div className="my-0 d-flex justify-content-end"><h3>{anyWeather?.name ? `${anyWeather?.name} - ${anyWeather?.sys?.country}` : `${local?.name} - ${local?.sys?.country}`}</h3></div>
+        <div className="my-0 d-flex justify-content-center"><h3>{anyWeather?.name ? `${anyWeather?.main?.temp?.toFixed(0)}ºC` : `${local?.main?.temp?.toFixed(0)}ºC`}</h3></div>
+        <div className="my-0 d-flex justify-content-center fs-6">{anyWeather?.name ? `${anyWeather?.main?.temp_min?.toFixed(0)}ºC - ${anyWeather?.main?.temp_max?.toFixed(0)}ºC ` : `${local?.main?.temp_min?.toFixed(0)}ºC - ${local?.main?.temp_max?.toFixed(0)}ºC `}</div>        
         </div>
       </div>
       </div>
 
-      <div className="wrap_options_here row px-4 my-2">
+      <div className="wrap_earth bg-primary p-0" style = {{display:dearth}}>
+          <img src="https://thumbs.gfycat.com/AnySourJanenschia-max-1mb.gif" alt="imagen del planeta girando" />
+        </div>
+
+      <div className="wrap_options_here row px-4 my-2" style = {{display:dplay}}>
         <div className="col d-flex flex-column flex-wrap p-0 m-0 h-auto">
           <div className="col my-1 d-inline-block text-center fs-3">{setReco.commet}</div>
 
@@ -281,8 +267,9 @@ console.log(anyWeather_formattedTime);
             </div>
 
           <div className="col d-flex justify-content-center bg-warning p-2 mt-2 mb-4 fs-6 text-center">{setReco.recomendation}</div>
-        </div>
-        </div>
+        </div>       
+
+        </div>        
 
     </div>
   );

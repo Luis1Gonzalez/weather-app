@@ -1,6 +1,6 @@
 .wrap_weather_here {
 box-shadow: 0 0 5px #ccc, 0 0 8px #fff;
-height: 150px;
+height: 170px;
 background-repeat: no-repeat;
 background-size: cover;
 }
@@ -39,4 +39,14 @@ background-size: cover;
 }
 
 
+.visto{
+    display:block;
+}
 
+.oculto{
+    display:none;
+}
+
+.wrap_earth img{
+    width: 100%;
+}
