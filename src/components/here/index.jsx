@@ -231,13 +231,13 @@ function hidenToggler(){
       <div className="wrap_weather_here row px-3 w-100"  style = {{backgroundImage:theme, color:themeText, fontWeight:"bold",textShadow:"0 0 6px #000, 0 0 8px #fff", display:dplay}}>
       <div className="col col-4 d-flex flex-column justify-content-center align-items-center flex-wrap" >
       <div className="here_icon"><img src={urlIcons} alt="" /></div>
-      <div className="here_icon_description fs-6">{descriptions}</div>
+      <div className="here_icon_description">{descriptions}</div>
       </div>
 
-      <div className="col col-8 d-flex justify-content-center align-items-center">        
+      <div className="col col d-flex justify-content-center align-items-center">        
           <div className="here_day col d-flex flex-column">
           <div className="here_time my-0 d-flex justify-content-end fs-6">{outputDate}</div>
-          <div className="my-0 d-flex justify-content-end fs-6">{`Tiempo a las ${outputHour} hora local`}</div>
+          <div className="my-0 d-flex justify-content-end">{`Tiempo a las ${outputHour} hora local`}</div>
 
         <div className="my-0 d-flex justify-content-end"><h3>{anyWeather?.name ? `${anyWeather?.name} - ${anyWeather?.sys?.country}` : `${local?.name} - ${local?.sys?.country}`}</h3></div>
         <div className="my-0 d-flex justify-content-center"><h3>{anyWeather?.name ? `${anyWeather?.main?.temp?.toFixed(0)}ºC` : `${local?.main?.temp?.toFixed(0)}ºC`}</h3></div>
