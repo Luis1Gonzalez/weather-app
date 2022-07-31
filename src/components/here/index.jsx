@@ -96,6 +96,7 @@ let iconTimeLocal = "";
     "icon3":<AiFillShopping />,
     "option4":"Hacer algún deporte",
     "icon4":<GiIceSkate />,
+    "recomendation":"Con temperaturas tan bajas, no hay que parar, solo hay que tomar las precauciones necesarias, coger un buen abrigo y a seguir disfrutando."
   };
 
 
