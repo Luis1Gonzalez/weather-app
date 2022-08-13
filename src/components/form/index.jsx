@@ -8,7 +8,7 @@ export default function Form({newLocation}){
     function onSubmit(e){
         e.preventDefault();
         // console.log({city});
-        if(city=== "" || !city || countries===" || !countries")return;
+        if(city=== "" || !city || countries==="" || !countries)return;
 
         newLocation(city,countries);
         
