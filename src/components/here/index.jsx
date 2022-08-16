@@ -48,7 +48,7 @@ let iconTimeLocal = "";
   let dplay = ""
   let dearth ="";
   
-  
+  console.log(anyLocation)
 
   let hot = {
     "commet":"!Vaya, que calor¡ Con este teimpo lo mejor es:",
@@ -122,7 +122,7 @@ let iconTimeLocal = "";
 
       .then((w) => {
         setAnyWeather(w);
-        // console.log(w);
+        console.log(w);
       })
       .catch((error) => {
         console.log(error);
@@ -151,7 +151,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&app
 
 .then((l) => {
   setLocal(l)
-  // console.log(l)
+  console.log(l)
 })
 
 .catch((error) =>{
@@ -222,7 +222,7 @@ function hidenToggler(){
   }
 }
   hidenToggler()
-
+ 
   return (
   
       <div className="wrap_here d-flex flex-column align-items-center">
